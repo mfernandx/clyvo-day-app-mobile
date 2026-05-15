@@ -18,3 +18,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+//instalou vector icon
+//instalou o async storage
