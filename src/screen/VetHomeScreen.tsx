@@ -1,6 +1,9 @@
 import React from "react";
 import {ScrollView,Text,StyleSheet,View,} from "react-native";
 import Header from "../components/Header";
+import InfoCard from "../components/InfoCard";
+import TimelineCard from "../components/TimelineCard";
+import { recomendacaoMock, timelineMock } from "../mock/mockData";
 
 
 export default function VetHomeScreen() {
@@ -11,35 +14,59 @@ export default function VetHomeScreen() {
 
       <Header
         title="Olá, Veterinário 👋"
-        subtitle="Visão longitudinal dos pacientes"
+        subtitle="  Visão longitudinal dos pacientes"
       />
 
-      <View style={styles.infoContainer}>
-
-        
-
-      </View>
+      <Text style={styles.tituloSessao}>Dashboard Clínico</Text>
 
       <View style={styles.infoContainer}>
 
-       
+        <InfoCard titulo="Pets" valor={18}/>
+
+        <InfoCard titulo="Em risco" valor={3}/>
 
       </View>
 
-      <Text style={styles.sectionTitle}>
-        Dashboard Clínico
-      </Text>
 
-      <Text style={styles.sectionTitle}>
-        Eventos Recentes
-      </Text>
+      <View style={styles.infoContainer}>
+
+        <InfoCard titulo="Adesão" valor="86%"/>
+
+        <InfoCard titulo="Eventos" valor={12}/>
+
+      </View>
 
 
-      <Text style={styles.sectionTitle}>
-        Recomendações Clínicas
-      </Text>
+      <Text style={styles.tituloSessao}>Eventos Recentes</Text>
 
-      
+      {timelineMock.map((event) => (
+
+        <TimelineCard
+          key={event.id}
+
+          titulo={event.titulo}
+
+          descricao={event.descricao}
+
+          data={event.data}
+        />
+      ))}
+
+
+      <Text style={styles.tituloSessao}>Recomendações Clínicas</Text>
+
+      {recomendacaoMock.map((item) => (
+
+        <TimelineCard
+          key={item.id}
+
+          titulo={item.titulo}
+
+          descricao={"Prioridade: " + item.prioridade}
+
+          data={"Hoje"}
+        />
+      ))}
 
     </ScrollView>
   );
@@ -57,7 +84,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
-  sectionTitle: {
+  tituloSessao: {
     fontSize: 22,
     fontWeight: "bold",
     marginTop: 20,
