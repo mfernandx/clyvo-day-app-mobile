@@ -1,12 +1,11 @@
 import React from "react";
 import LoginScreen from "./src/screen/LoginScreen";
 import CadastroScreen from "./src/screen/CadastroScreen";
-import TutorHomeScreen from "./src/screen/TutorHomeScreen";
-import VetHomeScreen from "./src/screen/VetHomeScreen";
 import { NavigationContainer,} from "@react-navigation/native";
 import { createNativeStackNavigator,} from "@react-navigation/native-stack";
 import NavegadorTutor from "./src/components/NavegadorTutor";
 import NavegadorVet from "./src/components/NavegadorVet";
+import CadastroPetScreen from "./src/screen/CadastroPetScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -20,12 +19,10 @@ export default function App() {
             <Stack.Screen name="Login" component={LoginScreen}/>
     
             <Stack.Screen name="Cadastro" component={CadastroScreen}/>
-    
-            {/* <Stack.Screen name="TutorHome" component={TutorHomeScreen}/> */}
+
+            <Stack.Screen name="CadastroPet" component={CadastroPetScreen}/>
 
             <Stack.Screen name="TutorHome" component={NavegadorTutor}/>
-    
-            {/* <Stack.Screen name="VetHome" component={VetHomeScreen}/> */}
 
             <Stack.Screen name="VetHome" component={NavegadorVet}/>
 

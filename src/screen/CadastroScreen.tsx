@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import {View,Text,TextInput,TouchableOpacity,StyleSheet,Alert,} from "react-native";
-import { registrarUsuario } from "../services/autenticacaoService";
+import { login, registrarUsuario } from "../services/autenticacaoService";
 
 export default function CadastroScreen({navigation,}: any) {
 
   const [nome, setNome] = useState("");
-
   const [email, setEmail] = useState("");
-
   const [senha, setSenha] = useState("");
-
   const [tipoUsuario, setTipoUsuario] = useState<"TUTOR" | "VETERINÁRIO">("TUTOR");
-
   const [telefone, setTelefone] = useState("");
-
   const [endereco, setEndereco] = useState("");
 
   async function handleCadastro() {
@@ -30,31 +25,33 @@ export default function CadastroScreen({navigation,}: any) {
 
     const novoUsuario = {
       id: Math.floor(Math.random() * 100000),
-
       nome,
-
       email,
-
       senha,
-
       tipoUsuario,
-
       telefone,
-
       endereco,
-
-      criadoEm:
-        new Date().toISOString(),
+      criadoEm:new Date().toISOString(),
     };
 
     await registrarUsuario(novoUsuario);
+
+    await login(email, senha);
 
     Alert.alert(
       "Sucesso",
       "Usuário cadastrado!"
     );
 
-    navigation.navigate("Login");
+    if (tipoUsuario === "TUTOR") {
+
+        navigation.replace("CadastroPet",{tutorId: novoUsuario.id,});
+
+    } else {
+
+        navigation.replace("Login");
+    }
+    
   }
 
   return (
@@ -73,35 +70,18 @@ export default function CadastroScreen({navigation,}: any) {
 
       <TextInput placeholder="Endereço (opcional)" style={styles.input} value={endereco} onChangeText={setEndereco}/>
 
-      <View style={styles.typeContainer}>
+      <View style={styles.tipoUsuarioContainer}>
 
         <TouchableOpacity
-          style={[
-            styles.typeButton,
-
-            tipoUsuario === "TUTOR" &&
-              styles.tipoUsuario
-          ]}
-          onPress={() =>
-            setTipoUsuario("TUTOR")
-          }
+          style={[styles.tipoUsuarioButton,tipoUsuario === "TUTOR" && styles.tipoUsuarioSelecionado]}
+          onPress={() => setTipoUsuario("TUTOR")}
         >
           <Text>Tutor</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[
-            styles.typeButton,
-
-            tipoUsuario ===
-              "VETERINÁRIO" &&
-              styles.tipoUsuario
-          ]}
-          onPress={() =>
-            setTipoUsuario(
-              "VETERINÁRIO"
-            )
-          }
+          style={[styles.tipoUsuarioButton,tipoUsuario === "VETERINÁRIO" && styles.tipoUsuarioSelecionado]}
+          onPress={() => setTipoUsuario("VETERINÁRIO")}
         >
           <Text>Veterinário</Text>
         </TouchableOpacity>
@@ -137,51 +117,39 @@ const styles = StyleSheet.create({
 
   input: {
     backgroundColor: "#FFF",
-
     borderRadius: 12,
-
     padding: 16,
-
     marginBottom: 16,
   },
 
-  typeContainer: {
+  tipoUsuarioContainer: {
     flexDirection: "row",
     marginBottom: 20,
     gap: 10,
   },
 
-  typeButton: {
+  tipoUsuarioButton: {
     flex: 1,
-
     padding: 16,
-
     backgroundColor: "#DDD",
-
     borderRadius: 12,
-
     alignItems: "center",
   },
 
-  tipoUsuario: {
+  tipoUsuarioSelecionado: {
     backgroundColor: "#d3e5ff",
   },
 
   button: {
     backgroundColor: "#1f6ae1",
-
     padding: 18,
-
     borderRadius: 12,
-
     alignItems: "center",
   },
 
   buttonText: {
     color: "#FFF",
-
     fontWeight: "bold",
-
     fontSize: 16,
   },
 });
