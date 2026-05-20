@@ -1,24 +1,3 @@
-export const petsMock = [
-  {
-    id: 1,
-    nome: "Thor",
-    especie: "Cachorro",
-    raca: "Golden Retriever",
-    idade: 5,
-    faseVida: "ADULTO",
-    scoreSaude: 87,
-  },
-
-  {
-    id: 2,
-    nome: "Luna",
-    especie: "Gato",
-    raca: "Siamês",
-    idade: 2,
-    faseVida: "JOVEM",
-    scoreSaude: 94,
-  },
-];
 
 export const timelineMock = [
 

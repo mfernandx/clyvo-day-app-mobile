@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {ScrollView,Text,StyleSheet,View,} from "react-native";
 import Header from "../components/Header";
 import InfoCard from "../components/InfoCard";
 import TimelineCard from "../components/TimelineCard";
 import { recomendacaoMock, timelineMock } from "../mock/mockData";
+import { carregarSessao } from "../services/autenticacaoService";
 
 
 export default function VetHomeScreen() {
+
+  const [userName, setUserName] =useState("");
+
+  useEffect(() => {carregaDadosVet();}, []);
+
+  async function carregaDadosVet() {
+  
+      const user = await carregarSessao();
+      console.log(user);
+  
+      if (!user) return;
+  
+      setUserName(user.nome);
+  
+    }
 
   return (
 
     <ScrollView style={styles.container}>
 
       <Header
-        title="Olá, Veterinário 👋"
-        subtitle="  Visão longitudinal dos pacientes"
+        title={`Olá, ${userName} 👋`}
+        subtitle="  Visão longitudinal dos seus pacientes"
       />
 
       <Text style={styles.tituloSessao}>Dashboard Clínico</Text>
@@ -43,11 +59,8 @@ export default function VetHomeScreen() {
 
         <TimelineCard
           key={event.id}
-
           titulo={event.titulo}
-
           descricao={event.descricao}
-
           data={event.data}
         />
       ))}
@@ -59,11 +72,8 @@ export default function VetHomeScreen() {
 
         <TimelineCard
           key={item.id}
-
           titulo={item.titulo}
-
           descricao={"Prioridade: " + item.prioridade}
-
           data={"Hoje"}
         />
       ))}
