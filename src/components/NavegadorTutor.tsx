@@ -4,6 +4,7 @@ import {Ionicons,} from "@expo/vector-icons";
 import TutorHomeScreen from "../screen/TutorHomeScreen";
 import TutorPetsScreen from "../screen/TutorPetsScreen";
 import TutorPerfilScreen from "../screen/TutorPerfilScreen";
+import TutorMonitoramentoScreen from "../screen/TutorMonitoramentoScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -36,6 +37,10 @@ export default function NavegadorTutor() {
             iconName = "home";
           }
 
+          else if (route.name === "Monitoramento") {
+            iconName = "bar-chart";
+          }
+
           else if (route.name === "Pets") {
             iconName = "paw";
           }
@@ -52,6 +57,8 @@ export default function NavegadorTutor() {
     >
 
       <Tab.Screen name="Home" component={TutorHomeScreen}/>
+
+      <Tab.Screen name="Monitoramento" component={TutorMonitoramentoScreen}/>
 
       <Tab.Screen name="Pets" component={TutorPetsScreen}/>
 
