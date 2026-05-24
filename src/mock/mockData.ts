@@ -1,4 +1,5 @@
 import { AcompanhamentoClinico } from "../model/AcompanhamentoClinico";
+import { Paciente } from "../model/Paciente";
 
 export const timelineMock = [
 
@@ -83,5 +84,45 @@ export const acompanhamentoMock:AcompanhamentoClinico[] = [
     descricao: "Monitoramento diário preenchido pelo tutor.",
     data: "Ontem • 14:10",
     status: "NORMAL",
+  },
+];
+
+
+export const vetPacientesMock:Paciente[] = [
+
+  {
+    id: 1,
+    petNome: "Thor",
+    tutorNome: "João",
+    especie: "Cachorro",
+    faseVida: "Adulto",
+    scoreSaude: 88,
+    adesao: 92,
+    risco: "BAIXO",
+    ultimoMonitoramento:"Hoje",
+  },
+
+  {
+    id: 2,
+    petNome: "Luna",
+    tutorNome: "Marina",
+    especie: "Gato",
+    faseVida: "Idoso",
+    scoreSaude: 61,
+    adesao: 58,
+    risco: "ALTO",
+    ultimoMonitoramento:"Ontem",
+  },
+
+  {
+    id: 3,
+    petNome: "Max",
+    tutorNome: "Carlos",
+    especie: "Cachorro",
+    faseVida: "Filhote",
+    scoreSaude: 74,
+    adesao: 81,
+    risco: "MODERADO",
+    ultimoMonitoramento: "Hoje",
   },
 ];

@@ -1,13 +1,45 @@
 import React from "react";
-import { View,Text, StyleSheet } from "react-native";
-
+import {ScrollView,StyleSheet,TextInput,View,} from "react-native";
+import Header from "../components/Header";
+import PacienteCard from "../components/PacienteCard";
+import { vetPacientesMock } from "../mock/mockData";
 
 export default function VetPacientesScreen() {
 
-  return (  
-    <View style={styles.container}>
-      <Text style={styles.text}>pacientes do veterinario teste</Text>
-    </View>
+  return (
+
+    <ScrollView style={styles.container}>
+
+      <Header
+        tituloPagina="Pacientes"
+        titulo="Pets em acompanhamento"
+        subtitulo="Visualize indicadores importantes, adesão terapêutica e monitoramentos recentes dos pacientes."
+      />
+
+      <View style={styles.conteudoPagina}>
+
+        <TextInput placeholder="Buscar paciente..." style={styles.campoBusca}/>
+
+        {vetPacientesMock.map(
+          (paciente) => (
+
+          <PacienteCard
+            key={paciente.id}
+            petNome={paciente.petNome}
+            tutorNome={paciente.tutorNome}
+            especie={paciente.especie}
+            faseVida={paciente.faseVida}
+            scoreSaude={paciente.scoreSaude}
+            adesao={paciente.adesao}
+            risco={paciente.risco}
+            ultimoMonitoramento={paciente.ultimoMonitoramento}
+          />
+
+        ))}
+
+      </View>
+
+    </ScrollView>
   );
 }
 
@@ -15,12 +47,18 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "#F4F8F6",
   },
 
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
+  conteudoPagina: {
+    padding: 20,
+  },
+
+  campoBusca: {
+    backgroundColor: "#FFF",
+    borderRadius: 20,
+    padding: 18,
+    marginBottom: 24,
+    fontSize: 16,
   },
 });

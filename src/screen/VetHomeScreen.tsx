@@ -39,7 +39,6 @@ export default function VetHomeScreen() {
         <View style={styles.infoContainer}>
 
           <InfoCard titulo="Pets" valor={18}/>
-
           <InfoCard titulo="Em risco" valor={3}/>
 
         </View>
@@ -48,7 +47,6 @@ export default function VetHomeScreen() {
         <View style={styles.infoContainer}>
 
           <InfoCard titulo="Adesão" valor="86%"/>
-
           <InfoCard titulo="Eventos" valor={12}/>
 
         </View>
@@ -105,5 +103,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 30,
     marginBottom: 20,
+    color: "#1f6ae1"
   },
 });
