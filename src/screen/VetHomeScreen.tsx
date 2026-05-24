@@ -29,54 +29,57 @@ export default function VetHomeScreen() {
     <ScrollView style={styles.container}>
 
       <Header
-        title={`Olá, ${userName} 👋`}
-        subtitle="  Visão longitudinal dos seus pacientes"
+        tituloPagina="Início"
+        titulo={`Olá, ${userName} 👋`}
+        subtitulo="Visualize seus pacientes, eventos recentes e indicadores importantes para continuidade do cuidado."
       />
 
-      <Text style={styles.tituloSessao}>Dashboard Clínico</Text>
+      <View style={styles.conteudoPagina}>
 
-      <View style={styles.infoContainer}>
+        <View style={styles.infoContainer}>
 
-        <InfoCard titulo="Pets" valor={18}/>
+          <InfoCard titulo="Pets" valor={18}/>
 
-        <InfoCard titulo="Em risco" valor={3}/>
+          <InfoCard titulo="Em risco" valor={3}/>
+
+        </View>
+
+
+        <View style={styles.infoContainer}>
+
+          <InfoCard titulo="Adesão" valor="86%"/>
+
+          <InfoCard titulo="Eventos" valor={12}/>
+
+        </View>
+
+
+        <Text style={styles.tituloSessao}>Eventos Recentes</Text>
+
+        {timelineMock.map((event) => (
+
+          <TimelineCard
+            key={event.id}
+            titulo={event.titulo}
+            descricao={event.descricao}
+            data={event.data}
+          />
+        ))}
+
+
+        <Text style={styles.tituloSessao}>Recomendações Clínicas</Text>
+
+        {recomendacaoMock.map((item) => (
+
+          <TimelineCard
+            key={item.id}
+            titulo={item.titulo}
+            descricao={"Prioridade: " + item.prioridade}
+            data={"Hoje"}
+          />
+        ))}
 
       </View>
-
-
-      <View style={styles.infoContainer}>
-
-        <InfoCard titulo="Adesão" valor="86%"/>
-
-        <InfoCard titulo="Eventos" valor={12}/>
-
-      </View>
-
-
-      <Text style={styles.tituloSessao}>Eventos Recentes</Text>
-
-      {timelineMock.map((event) => (
-
-        <TimelineCard
-          key={event.id}
-          titulo={event.titulo}
-          descricao={event.descricao}
-          data={event.data}
-        />
-      ))}
-
-
-      <Text style={styles.tituloSessao}>Recomendações Clínicas</Text>
-
-      {recomendacaoMock.map((item) => (
-
-        <TimelineCard
-          key={item.id}
-          titulo={item.titulo}
-          descricao={"Prioridade: " + item.prioridade}
-          data={"Hoje"}
-        />
-      ))}
 
     </ScrollView>
   );
@@ -87,6 +90,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F4F8F6",
+  },
+
+  conteudoPagina: {
     padding: 20,
   },
 
@@ -97,7 +103,7 @@ const styles = StyleSheet.create({
   tituloSessao: {
     fontSize: 22,
     fontWeight: "bold",
-    marginTop: 20,
-    marginBottom: 16,
+    marginTop: 30,
+    marginBottom: 20,
   },
 });

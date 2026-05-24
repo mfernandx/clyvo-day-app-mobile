@@ -3,23 +3,30 @@ import {View,Text,StyleSheet,} from "react-native";
 
 
 interface Props {
-  title: string;
-  subtitle?: string;
+  tituloPagina?: string;
+  titulo: string;
+  subtitulo?: string;
 }
 
-export default function Header({title,subtitle,}: Props) {
+export default function Header({tituloPagina,titulo,subtitulo,}: Props) {
 
   return (
 
     <View style={styles.container}>
 
-      <Text style={styles.title}> {title} </Text>
+      <View style={styles.topHeader}>
+        <Text style={styles.tituloPagina}>{tituloPagina}</Text>
+      </View>
 
-      {subtitle && (
-        <Text style={styles.subtitle}>
-          {subtitle}
+      <View style={styles.conteudo}>
+      <Text style={styles.titulo}>{titulo} </Text>
+
+      {subtitulo && (
+        <Text style={styles.subtitulo}>
+          {subtitulo}
         </Text>
       )}
+      </View>
 
     </View>
   );
@@ -28,16 +35,41 @@ export default function Header({title,subtitle,}: Props) {
 const styles = StyleSheet.create({
 
   container: {
-    marginBottom: 24,
+    marginBottom: 10,
   },
 
-  title: {
+  topHeader: {
+    backgroundColor: "#446cac",
+    paddingVertical: 18,
+    paddingHorizontal: 20,
+  },
+
+  tituloPagina: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  },
+
+  conteudo: {
+    backgroundColor: "#fff",
+    padding: 20,
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  titulo: {
     fontSize: 28,
     fontWeight: "bold",
     color: "#1f6ae1",
   },
 
-  subtitle: {
+  subtitulo: {
     fontSize: 16,
     marginTop: 4,
     color: "#666",

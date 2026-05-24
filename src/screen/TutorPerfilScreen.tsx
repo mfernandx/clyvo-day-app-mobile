@@ -25,23 +25,28 @@ export default function TutorPerfilScreen() {
     <View style={styles.container}>
 
       <Header
-        title="Meu Perfil"
-        subtitle=" Informações do tutor"
+        tituloPagina="Meu Perfil"
+        titulo="Informações do tutor"
+        subtitulo="Gerencie seus dados pessoais e acompanhe sua participação na jornada de cuidado dos seus pets."
       />
 
-      <View style={styles.card}>
+      <View style={styles.conteudoPagina}>
 
-        <Text style={styles.label}>Nome</Text>
-        <Text style={styles.valor}>{user.nome}</Text>
+        <View style={styles.card}>
 
-        <Text style={styles.label}>Email</Text>
-        <Text style={styles.valor}>{user.email}</Text>
+          <Text style={styles.label}>Nome</Text>
+          <Text style={styles.valor}>{user.nome}</Text>
 
-        <Text style={styles.label}>Tipo de usuário</Text>
-        <Text style={styles.valor}>{user.tipoUsuario}</Text>
+          <Text style={styles.label}>Email</Text>
+          <Text style={styles.valor}>{user.email}</Text>
 
-        <Text style={styles.label}>Cadastro</Text>
-        <Text style={styles.valor}>{new Date(user.criadoEm).toLocaleDateString()}</Text>
+          <Text style={styles.label}>Tipo de usuário</Text>
+          <Text style={styles.valor}>{user.tipoUsuario}</Text>
+
+          <Text style={styles.label}>Cadastro</Text>
+          <Text style={styles.valor}>{new Date(user.criadoEm).toLocaleDateString()}</Text>
+
+        </View>
 
       </View>
 
@@ -55,6 +60,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F4F8F6",
+  },
+
+  conteudoPagina: {
     padding: 20,
   },
 

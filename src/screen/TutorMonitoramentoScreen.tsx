@@ -70,73 +70,80 @@ export default function TutorMonitoramentoScreen() {
 
   return (
 
+    
+
     <ScrollView style={styles.container}>
 
       <Header
-        title="Monitoramento diário"
-        subtitle="Como seu pet está hoje?"
+        tituloPagina="Monitoramento Diário"
+        titulo="Como seu pet está hoje?"
+        subtitulo="Registre informações sobre comportamento, alimentação e bem-estar para acompanharmos sua evolução."
       />
 
-      <View style={styles.sectionTituloHumor}>
+      <View style={styles.conteudoPagina}>
 
-      <FontAwesome6 name="heart-circle-plus" size={26} color={"#1f6ae1"}/>
-      <Text style={styles.cardTitulo}>1. Humor do pet</Text>
+        <View style={styles.sectionTituloHumor}>
 
-      </View>
+        <FontAwesome6 name="heart-circle-plus" size={26} color={"#1f6ae1"}/>
+        <Text style={styles.cardTitulo}>1. Humor do pet</Text>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-
-        {moods.map((item) => (
-
-          <HumorCard key={item.key} icon={item.icon as any} label={item.label}
-
-            selected={humor === item.key}
-            onPress={() => setHumor(item.key)}/>
-
-        ))}
-
-      </ScrollView>
-
-      <PesoCard value={pesoAtual} onChangeText={setPesoAtual}/>
-
-      <View style={styles.card}>
-
-        <View style={styles.sectionTituloCard}>
-          <FontAwesome6 name="bowl-food" size={26} color={"#1f6ae1"} />
-          <Text style={styles.cardTitulo}>3. Alimentação Principal</Text>
         </View>
 
-        <TextInput style={styles.input} placeholder="Ex: Ração Golden" value={alimentacao} onChangeText={setAlimentacao}/>
-      
-      </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
 
+          {moods.map((item) => (
 
-      <View style={styles.card}>
+            <HumorCard key={item.key} icon={item.icon as any} label={item.label}
 
-        <View style={styles.sectionTituloCard}>
-          <Foundation name="guide-dog" size={40} color={"#1f6ae1"} />
-          <Text style={styles.cardTitulo}>4. Atividade Física</Text>
+              selected={humor === item.key}
+              onPress={() => setHumor(item.key)}/>
+
+          ))}
+
+        </ScrollView>
+
+        <PesoCard value={pesoAtual} onChangeText={setPesoAtual}/>
+
+        <View style={styles.card}>
+
+          <View style={styles.sectionTituloCard}>
+            <FontAwesome6 name="bowl-food" size={26} color={"#1f6ae1"} />
+            <Text style={styles.cardTitulo}>3. Alimentação Principal</Text>
+          </View>
+
+          <TextInput style={styles.input} placeholder="Ex: Ração Golden" value={alimentacao} onChangeText={setAlimentacao}/>
+        
         </View>
 
-        <TextInput style={styles.input} placeholder="Ex: Caminhada" value={atividadeRecente} onChangeText={setAtividadeRecente}/>
-      
-      </View>
 
-      <View style={styles.card}>
-        <View style={styles.sectionTituloCard}>
-          <AntDesign name="edit" size={28} color={"#1f6ae1"} />
-          <Text style={styles.cardTitulo}>5. Observações</Text>
+        <View style={styles.card}>
+
+          <View style={styles.sectionTituloCard}>
+            <Foundation name="guide-dog" size={40} color={"#1f6ae1"} />
+            <Text style={styles.cardTitulo}>4. Atividade Física</Text>
+          </View>
+
+          <TextInput style={styles.input} placeholder="Ex: Caminhada" value={atividadeRecente} onChangeText={setAtividadeRecente}/>
+        
         </View>
 
-        <TextInput style={[styles.input,{height: 120,}]}multiline value={observacao} onChangeText={setObservacao} placeholder="Como foi o dia do seu pet? Algum comportamento diferente?"/>
+        <View style={styles.card}>
+          <View style={styles.sectionTituloCard}>
+            <AntDesign name="edit" size={28} color={"#1f6ae1"} />
+            <Text style={styles.cardTitulo}>5. Observações</Text>
+          </View>
+
+          <TextInput style={[styles.input,{height: 120,}]}multiline value={observacao} onChangeText={setObservacao} placeholder="Como foi o dia do seu pet? Algum comportamento diferente?"/>
+
+        </View>
+
+        <TouchableOpacity style={styles.button}>
+
+          <Text style={styles.buttonText}>Salvar Monitoramento</Text>
+
+        </TouchableOpacity>
 
       </View>
-
-      <TouchableOpacity style={styles.button}>
-
-        <Text style={styles.buttonText}>Salvar Monitoramento</Text>
-
-      </TouchableOpacity>
 
     </ScrollView>
   );
@@ -147,6 +154,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F4F8F6",
+  },
+
+  conteudoPagina: {
     padding: 20,
   },
 
@@ -186,7 +196,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor:"#1f6ae1",
+    backgroundColor: "#446cac",
     padding: 20,
     borderRadius: 20,
     alignItems: "center",

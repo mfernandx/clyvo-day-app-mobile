@@ -27,37 +27,42 @@ export default function TutorPetsScreen() {
     <ScrollView style={styles.container}>
 
       <Header
-        title="Meus Pets"
-        subtitle=" Informações completas"
+        tituloPagina="Meus Pets"
+        titulo="Tudo sobre seus pets"
+        subtitulo="Visualize dados completos, fase de vida, peso e indicadores importantes de cada pet."
       />
 
-      {pets.map((pet) => (
+      <View style={styles.conteudoPagina}>
 
-        <View key={pet.id} style={styles.card}>
+        {pets.map((pet) => (
 
-          <Text style={styles.nome}>{pet.nome}</Text>
+          <View key={pet.id} style={styles.card}>
 
-          <Text style={styles.label}>Espécie:</Text>
-          <Text style={styles.valor}>{pet.especie}</Text>
+            <Text style={styles.nome}>{pet.nome}</Text>
 
-          <Text style={styles.label}>Raça:</Text>
-          <Text style={styles.valor}>{pet.raca}</Text>
+            <Text style={styles.label}>Espécie:</Text>
+            <Text style={styles.valor}>{pet.especie}</Text>
 
-          <Text style={styles.label}>Idade:</Text>
-          <Text style={styles.valor}>{pet.idade} anos</Text>
+            <Text style={styles.label}>Raça:</Text>
+            <Text style={styles.valor}>{pet.raca}</Text>
 
-          <Text style={styles.label}>Peso:</Text>
-          <Text style={styles.valor}>{pet.peso} kg</Text>
+            <Text style={styles.label}>Idade:</Text>
+            <Text style={styles.valor}>{pet.idade} anos</Text>
 
-          <Text style={styles.label}>Fase da vida:</Text>
-          <Text style={styles.valor}>{pet.faseVida}</Text>
+            <Text style={styles.label}>Peso:</Text>
+            <Text style={styles.valor}>{pet.peso} kg</Text>
 
-          <Text style={styles.label}>Score de saúde:</Text>
-          <Text style={styles.valor}>{pet.scoreSaude}</Text>
+            <Text style={styles.label}>Fase da vida:</Text>
+            <Text style={styles.valor}>{pet.faseVida}</Text>
 
-        </View>
+            <Text style={styles.label}>Score de saúde:</Text>
+            <Text style={styles.valor}>{pet.scoreSaude}</Text>
+
+          </View>
 
       ))}
+
+      </View>
 
     </ScrollView>
 
@@ -69,6 +74,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F4F8F6",
+  },
+
+  conteudoPagina: {
     padding: 20,
   },
 
