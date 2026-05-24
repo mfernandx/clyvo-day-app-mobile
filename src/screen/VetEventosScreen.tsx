@@ -1,13 +1,41 @@
 import React from "react";
-import { View,Text, StyleSheet } from "react-native";
-
+import {ScrollView,StyleSheet,Text,View,} from "react-native";
+import Header from "../components/Header";
+import EventosCard from "../components/EventosCard";
+import { acompanhamentoMock } from "../mock/mockData";
 
 export default function VetEventosScreen() {
 
-  return (  
-    <View style={styles.container}>
-      <Text style={styles.text}>eventos do veterinario teste</Text>
-    </View>
+  return (
+
+    <ScrollView style={styles.container}>
+
+      <Header
+        tituloPagina="Eventos Clínicos"
+        titulo="Atualizações recentes"
+        subtitulo="Acompanhe alterações no comportamento dos pacientes, monitoramentos e novos eventos compartilhados pelos tutores."
+      />
+
+      <View style={styles.conteudoPagina}>
+
+        {acompanhamentoMock.map(
+          (event) => (
+
+          <EventosCard
+            key={event.id}
+            petNome={event.petNome}
+            tutorNome={event.tutorNome}
+            titulo={event.titulo}
+            descricao={event.descricao}
+            data={event.data}
+            status={event.status}
+          />
+
+        ))}
+
+      </View>
+
+    </ScrollView>
   );
 }
 
@@ -15,12 +43,11 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "#F4F8F6",
   },
 
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
+  conteudoPagina: {
+    padding: 20,
   },
+
 });
