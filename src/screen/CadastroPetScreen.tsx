@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
   titulo: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#1f6ae1",
-    marginTop: 40,
+    color: "#446cac",
+    marginTop: 100,
   },
 
   subtitulo: {
@@ -146,11 +146,11 @@ const styles = StyleSheet.create({
   },
 
   faseVidaSelecionada: {
-    backgroundColor: "#1f6ae1",
+    backgroundColor: "#d3e5ff",
   },
 
   button: {
-    backgroundColor: "#1f6ae1",
+    backgroundColor: "#446cac",
     padding: 18,
     borderRadius: 14,
     alignItems: "center",

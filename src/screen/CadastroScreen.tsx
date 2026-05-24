@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {View,Text,TextInput,TouchableOpacity,StyleSheet,Alert,} from "react-native";
+import {View,Text,TextInput,TouchableOpacity,StyleSheet,Alert, ImageBackground,} from "react-native";
 import { login, registrarUsuario } from "../services/autenticacaoService";
 
 export default function CadastroScreen({navigation,}: any) {
@@ -58,6 +58,9 @@ export default function CadastroScreen({navigation,}: any) {
 
     <View style={styles.container}>
 
+      <ImageBackground source={require("../../assets/header-cadastro-background.png")} style={styles.header} resizeMode="cover"></ImageBackground>
+      
+      <View style={styles.cadastro}>
       <Text style={styles.title}>Criar Conta</Text>
 
       <TextInput placeholder="Nome" style={styles.input} value={nome} onChangeText={setNome}/>
@@ -96,6 +99,10 @@ export default function CadastroScreen({navigation,}: any) {
       </TouchableOpacity>
 
     </View>
+
+    <ImageBackground source={require("../../assets/footer-cadastro-background.png")} style={styles.footer} resizeMode="cover"></ImageBackground>
+    
+    </View>
   );
 }
 
@@ -103,16 +110,26 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+    backgroundColor: "#F4F8F6",
+  },
+
+  header: {
+    height: 125,
+    width: "100%",
+    justifyContent: "center",
+  },
+
+  cadastro: {
     justifyContent: "center",
     padding: 24,
-    backgroundColor: "#F4F8F6",
+    marginTop: 20
   },
 
   title: {
     fontSize: 32,
     fontWeight: "bold",
     marginBottom: 30,
-    color: "#1f6ae1",
+    color: "#446cac",
   },
 
   input: {
@@ -141,7 +158,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "#1f6ae1",
+    backgroundColor: "#446cac",
     padding: 18,
     borderRadius: 12,
     alignItems: "center",
@@ -152,4 +169,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
+
+  footer: {
+    height: 125,
+    width: "100%",
+    justifyContent: "center",
+  }
 });
